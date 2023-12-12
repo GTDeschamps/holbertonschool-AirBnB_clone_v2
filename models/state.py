@@ -20,18 +20,5 @@ class State(BaseModel, Base):
             from models import storage
             return [city for city in storage.all(City).values()
                     if city.state_id == self.id]
-"""class State(BaseModel, Base):
 
-    __tablename__ = 'states'
-
-    name = Column(String(128), nullable=False)
-
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
-            cities = relationship('City', backref='state',
-                                  cascade='all')
-    else:
-        @property
-        def cities(self):
-            from models import storage
-            return [city for city in storage.all(City).values()
-                    if city.state_id == self.id]"""
+        
