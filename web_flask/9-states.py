@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""generate a flask script for State"""
+
 
 from flask import Flask, render_template
 from models import storage
@@ -31,4 +33,5 @@ def display_state_cities(state_id):
 
 
 if __name__ == '__main__':
+    """run the application on 0.0.0.0, port 500"""
     app.run(host='0.0.0.0', port=5000)

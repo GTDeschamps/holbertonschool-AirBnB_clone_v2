@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""generate a flask script for State_list"""
+
 
 from flask import Flask, render_template
 from models import storage
@@ -13,6 +15,7 @@ app = Flask(__name__)
 def teardown_db(exception):
     """Remove the current SQLAlchemy Session."""
     storage.close()
+
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
