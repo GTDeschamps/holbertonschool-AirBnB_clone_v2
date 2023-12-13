@@ -6,7 +6,7 @@ from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.city import City
-from sqlalchemy.orm import scoped_session
+from markupsafe import escape
 
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ app = Flask(__name__)
 def states_list():
     """display HTML page: (inside the tag BODY)"""
     states = storage.all(State).values()
-    sorted_states = sorted(states, key=lambda state: state.name)
+    sorted_states = sorted(states, key=lambda x: x.name)
 
     return render_template('7-states_list.html', states=sorted_states)
 
@@ -24,7 +24,7 @@ def states_list():
 @app.route('/cities_by_states', strict_slashes=False)
 def cities_by_states():
     states = storage.all(State).values()
-    sorted_states = sorted(states, key=lambda state: state.name)
+    sorted_states = sorted(states, key=lambda x: x.name)
 
     return render_template('8-cities_by_states.html', states=sorted_states)
 
