@@ -11,11 +11,6 @@ from models.amenity import Amenity
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def teardown_db(exception):
-    storage.close()
-
-
 @app.route('/hbnb_filters', strict_slashes=False)
 def display_hbnb_filters():
     states = sorted(storage.all(State).values(), key=lambda state: state.name)
@@ -26,6 +21,11 @@ def display_hbnb_filters():
                            cities=cities, amenities=amenities)
 
 
+@app.teardown_appcontext
+def teardown_db(exception):
+    storage.close()
+
+    
 if __name__ == '__main__':
     """run the application on 0.0.0.0, port 500"""
     app.run(host='0.0.0.0', port=5000)

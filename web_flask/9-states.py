@@ -10,11 +10,6 @@ from models.city import City
 app = Flask(__name__)
 
 
-@app.teardown_appcontext
-def teardown_db(exception):
-    storage.close()
-
-
 @app.route('/states', strict_slashes=False)
 def display_states():
     states = storage.all(State).values()
@@ -32,6 +27,11 @@ def display_state_cities(state_id):
         return render_template('not_found.html')
 
 
+@app.teardown_appcontext
+def teardown_db(exception):
+    storage.close()
+
+    
 if __name__ == '__main__':
     """run the application on 0.0.0.0, port 500"""
     app.run(host='0.0.0.0', port=5000)
