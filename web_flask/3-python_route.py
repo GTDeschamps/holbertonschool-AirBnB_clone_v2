@@ -28,7 +28,6 @@ def C_text(text):
 
 @app.route("/python/", strict_slashes=False,
            defaults={'text': 'is_cool'})
-
 @app.route("/python/<text>", strict_slashes=False)
 def PYTHON_text(text):
     """return Python <text>"""
