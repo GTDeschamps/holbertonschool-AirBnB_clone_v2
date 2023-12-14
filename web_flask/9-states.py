@@ -12,6 +12,7 @@ app = Flask(__name__)
 
 @app.route('/states', strict_slashes=False)
 def display_states():
+    """display states"""
     states = storage.all(State).values()
     sorted_states = sorted(states, key=lambda state: state.name)
     return render_template('states.html', states=sorted_states)
@@ -19,6 +20,7 @@ def display_states():
 
 @app.route('/states/<state_id>', strict_slashes=False)
 def display_state_cities(state_id):
+    """display state_cities"""
     state = storage.get(State, state_id)
     if state:
         cities = sorted(state.cities, key=lambda city: city.name)
@@ -29,9 +31,10 @@ def display_state_cities(state_id):
 
 @app.teardown_appcontext
 def teardown_db(exception):
+    """Remove the current SQLAlchemy Session."""
     storage.close()
 
-    
+
 if __name__ == '__main__':
     """run the application on 0.0.0.0, port 500"""
     app.run(host='0.0.0.0', port=5000)

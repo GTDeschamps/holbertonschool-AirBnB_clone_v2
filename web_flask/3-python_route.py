@@ -10,13 +10,13 @@ app = Flask(__name__)
 @app.route("/", strict_slashes=False)
 def hello_HBNB():
     """return Hello HBNB"""
-    return "<p>Hello HBNB!</p>"
+    return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
 def HBNB():
     """return HBNB"""
-    return "<p>HBNB</p>"
+    return "HBNB"
 
 
 @app.route("/c/<text>", strict_slashes=False)
