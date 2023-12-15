@@ -23,7 +23,7 @@
 						{% for state in states %}
         					<H4>{{ state.name }}</H4>
 								<UL>
-									{% for city in cities %}
+									{% for city in state.cities %}
 										<LI>{{ city.name }}</LI>
 									{% endfor %}
 								</UL>
