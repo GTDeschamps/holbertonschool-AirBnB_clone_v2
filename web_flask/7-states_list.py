@@ -5,7 +5,6 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-from markupsafe import escape
 
 
 app = Flask(__name__)
@@ -14,10 +13,9 @@ app = Flask(__name__)
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """display HTML page: (inside the tag BODY)"""
-    states = storage.all(State).values()
-    sorted_states = sorted(states, key=lambda x: x.name)
+    state_list = storage.all(State).values()
 
-    return render_template('7-states_list.html', states=sorted_states)
+    return render_template('7-states_list.html', all_states=state_list)
 
 
 @app.teardown_appcontext
