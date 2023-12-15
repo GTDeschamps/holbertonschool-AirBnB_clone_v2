@@ -41,11 +41,9 @@
 					<H3>Amenities</H3>
 					<H4>internet, kitchen...</H4>
 					<UL class="popover">
-							<LI class="central">Internet</LI>
-							<LI class="central">Kitchen</LI>
-							<LI class="central">TV</LI>
-							<LI class="central">2nd Bedroom</LI>
-							<LI class="central">Iron</LI>
+						{% for amenity in amenities %}
+        					<LI>{{ amenity.name }}</LI>
+        				{% endfor %}
 					</UL>
 				</UL>
 			</DIV>
